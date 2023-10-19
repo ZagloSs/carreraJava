@@ -1,32 +1,58 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class cocheHilo extends Thread{
-	private String id;
-	private String[] posiNombre;
-	public cocheHilo(String id) {
-		
-		this.id = id;
+	private String ide;
+	private int vueltas= 0;
+	podio podio;
+	public cocheHilo(String id, podio podio) {
+		this.podio = podio;
+		this.ide = id;
 	}
 
-	public synchronized void run() {
+	public String getIde() {
+		return ide;
+	}
+
+
+	public void setIde(String ide) {
+		this.ide = ide;
+	}
+
+
+	public int getVueltas() {
+		return vueltas;
+	}
+
+
+	public void setVueltas(int vueltas) {
+		this.vueltas = vueltas;
+	}
+
+
+	public void run() {
 		Random r = new Random();
 		
-		int vuelta = 0;
 		
-		while(vuelta > 10) {
+		while(vueltas < 10) {
 			try {
-				Thread.sleep(r.nextLong(2500)+500);
-				vuelta++;
+				Thread.sleep(0*(r.nextLong(2500)+500));
+				vueltas++;
+				if(podio.contains(this)) {
+					podio.updatePodio(this);
+				}else {
+					podio.add(this);
+				}
+				
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
-		
-		if (vuelta == 10) {
-			
-		}
+
 	}
+	
+	
 	
 }
