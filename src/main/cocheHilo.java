@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class cocheHilo extends Thread{
 	private String ide;
-	private int vueltas= 0;
+	private Integer vueltas= 0;
 	podio podio;
 	public cocheHilo(String id, podio podio) {
 		this.podio = podio;
@@ -22,7 +22,7 @@ public class cocheHilo extends Thread{
 	}
 
 
-	public int getVueltas() {
+	public Integer getVueltas() {
 		return vueltas;
 	}
 
@@ -36,9 +36,9 @@ public class cocheHilo extends Thread{
 		Random r = new Random();
 		
 		
-		while(vueltas < 10) {
+		for(int i = 0; i< 10; i++) {
 			try {
-				Thread.sleep(0*(r.nextLong(2500)+500));
+				Thread.sleep(r.nextLong(2500)+500);
 				vueltas++;
 				if(podio.contains(this)) {
 					podio.updatePodio(this);

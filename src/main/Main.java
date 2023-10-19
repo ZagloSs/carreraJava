@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Main {
 
 	public static void main(String[] args) {
-		int nCoches = 1;
+		int nCoches = 10;
 		ArrayList<cocheHilo> coches = new ArrayList<cocheHilo>();
 		podio podio = new podio(new ArrayList<cocheHilo>());
 		
@@ -16,27 +16,27 @@ public class Main {
 			coches.get(i).start();
 		}
 		
-		for(cocheHilo coche : coches) {
-			try {
-				Thread.sleep(2000);
-				while(coche.isAlive()) {
-					System.out.println(podio.getPosiciones().get(0).getVueltas());
+		for (cocheHilo coche : coches) {
+			while (coche.isAlive()) {
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					Thread.currentThread().interrupt();
 				}
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				sort(podio.getPosiciones());
+				podio.imprimirPodio();
+
 			}
 			
-			
-		}
-		
-		
-		
-		
-		
-		
+
 		}
 			
 	}
+	
+	public static void sort(ArrayList<cocheHilo> podio) {
+		podio.sort((c2, c1) -> c1.getVueltas().compareTo(c2.getVueltas()));
+
+	}
+}
 
 
