@@ -23,7 +23,8 @@ public class Main {
 				} catch (InterruptedException e) {
 					Thread.currentThread().interrupt();
 				}
-				sort(podio.getPosiciones());
+				ordenarArray(podio.getPosiciones());
+				System.out.println("Posicion     Coche     Vueltas");
 				podio.imprimirPodio();
 
 			}
@@ -33,7 +34,7 @@ public class Main {
 			
 	}
 	
-	public static void sort(ArrayList<cocheHilo> podio) {
+	public static void ordenarArray(ArrayList<cocheHilo> podio) {
 		podio.sort((c2, c1) -> c1.getVueltas().compareTo(c2.getVueltas()));
 
 	}

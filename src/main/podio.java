@@ -33,7 +33,8 @@ public class podio {
 	public synchronized void imprimirPodio() {
 		for (int i = 0; i < posiciones.size(); i++) {
 			
-			System.out.println((i + 1) + " " + posiciones.get(i).getIde() + " " + posiciones.get(i).getVueltas());
+			
+			System.out.println((i + 1) + "             " + posiciones.get(i).getIde() + "         " + posiciones.get(i).getVueltas());
 			}
 		System.out.println("\n");
 	}
